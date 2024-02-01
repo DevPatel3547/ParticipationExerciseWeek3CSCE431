@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-#  has_many :posts
-#  has_many :comments
-<<<<<<< HEAD
-=======
-#added validation for test to pass
->>>>>>> a80aac5e7bc8af39043f61436e2bd26900593864
-validates_presence_of :first_name
-validates_presence_of :last_name
+  # Associations
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  # Validations
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  # Add other necessary validations based on your application's requirements
+  # For example:
+  # validates :email, presence: true, uniqueness: true
 end
