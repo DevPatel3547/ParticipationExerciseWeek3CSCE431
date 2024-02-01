@@ -1,4 +1,4 @@
-name: Master
+name: Test
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - dev
       - test
       - main
-      -master
+      - master
+
 
 jobs:
   build:
@@ -60,17 +61,17 @@ jobs:
         PGHOST: localhost
         PGUSER: postgres
         PGPASSWORD: postgres
-        RAILS_ENV: master
+        RAILS_ENV: test
       run: |
-        bundle exec rails db:setup RAILS_ENV=master
-        bundle exec rake db:migrate RAILS_ENV=master
+        bundle exec rails db:setup RAILS_ENV=test
+        bundle exec rake db:migrate RAILS_ENV=test
 
     - name: Run Tests
       env:
         PGHOST: localhost
         PGUSER: postgres
         PGPASSWORD: postgres
-        RAILS_ENV: master
+        RAILS_ENV: test
       run: |
         bundler exec rspec
 #        npx update-browserslist-db@latest
